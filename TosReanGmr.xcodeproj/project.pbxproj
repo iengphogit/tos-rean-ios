@@ -12,6 +12,8 @@
 		C275558C2154A23800A014EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C275558A2154A23800A014EC /* Main.storyboard */; };
 		C275558E2154A23A00A014EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C275558D2154A23A00A014EC /* Assets.xcassets */; };
 		C27555912154A23A00A014EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C275558F2154A23A00A014EC /* LaunchScreen.storyboard */; };
+		C275559B2154CC1A00A014EC /* Bayon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C275559A2154CC1A00A014EC /* Bayon.ttf */; };
+		C275559D2154F08500A014EC /* SplashScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275559C2154F08500A014EC /* SplashScreenController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C275558D2154A23A00A014EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C27555902154A23A00A014EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C27555922154A23A00A014EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C275559A2154CC1A00A014EC /* Bayon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bayon.ttf; sourceTree = "<group>"; };
+		C275559C2154F08500A014EC /* SplashScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,32 @@
 		C27555852154A23800A014EC /* TosReanGmr */ = {
 			isa = PBXGroup;
 			children = (
+				C27555992154CC1A00A014EC /* bayon */,
+				C27555982154A24D00A014EC /* VController */,
 				C27555862154A23800A014EC /* AppDelegate.swift */,
-				C27555882154A23800A014EC /* ViewController.swift */,
 				C275558A2154A23800A014EC /* Main.storyboard */,
 				C275558D2154A23A00A014EC /* Assets.xcassets */,
 				C275558F2154A23A00A014EC /* LaunchScreen.storyboard */,
 				C27555922154A23A00A014EC /* Info.plist */,
 			);
 			path = TosReanGmr;
+			sourceTree = "<group>";
+		};
+		C27555982154A24D00A014EC /* VController */ = {
+			isa = PBXGroup;
+			children = (
+				C27555882154A23800A014EC /* ViewController.swift */,
+				C275559C2154F08500A014EC /* SplashScreenController.swift */,
+			);
+			path = VController;
+			sourceTree = "<group>";
+		};
+		C27555992154CC1A00A014EC /* bayon */ = {
+			isa = PBXGroup;
+			children = (
+				C275559A2154CC1A00A014EC /* Bayon.ttf */,
+			);
+			path = bayon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +146,7 @@
 			files = (
 				C27555912154A23A00A014EC /* LaunchScreen.storyboard in Resources */,
 				C275558E2154A23A00A014EC /* Assets.xcassets in Resources */,
+				C275559B2154CC1A00A014EC /* Bayon.ttf in Resources */,
 				C275558C2154A23800A014EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C275559D2154F08500A014EC /* SplashScreenController.swift in Sources */,
 				C27555892154A23800A014EC /* ViewController.swift in Sources */,
 				C27555872154A23800A014EC /* AppDelegate.swift in Sources */,
 			);

@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Thread.sleep(forTimeInterval: 3.0)
+        let viewController = self.window?.rootViewController
+        viewController?.view.backgroundColor = UIColor.FlatColor.AppColor.primaryColorDark
+        viewController?.modalPresentationCapturesStatusBarAppearance = true
+        
         return true
     }
 
@@ -40,7 +45,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
 
 
 }
 
+extension UIColor {
+    
+    convenience init(red: Int, green: Int, blue: Int){
+        assert(red >= 0 && red <= 255,"Invalid red component")
+        assert(green >= 0 && green <= 255,"Invalid green component")
+        assert(blue >= 0 && blue <= 255,"Invalid blue component")
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(netHex:Int) {
+        self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+    }
+    
+    struct FlatColor {
+        struct AppColor {
+            static let primaryColor = UIColor.init(netHex: 0x00B140)
+            static let primaryColorDark = UIColor.init(netHex: 0x00BA51)
+        }
+    }
+    
+}
