@@ -9,11 +9,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Bayon.ttf">
-            <string>Bayon</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -22,27 +17,6 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="តោះរៀន" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pig-oO-dqd">
-                                <rect key="frame" x="139" y="285" width="98.5" height="58"/>
-                                <fontDescription key="fontDescription" name="Bayon" family="Bayon" pointSize="32"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="វេយ្យាករណ៍អង់គ្លេស" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6a-El-q0E">
-                                <rect key="frame" x="124" y="353" width="127" height="33"/>
-                                <fontDescription key="fontDescription" name="Bayon" family="Bayon" pointSize="18"/>
-                                <color key="textColor" red="1" green="0.97031808178360979" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0044836965389549732" green="0.72769773006439209" blue="0.3183249831199646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="i6a-El-q0E" firstAttribute="top" secondItem="Pig-oO-dqd" secondAttribute="bottom" constant="10" id="2cT-9i-hAE"/>
-                            <constraint firstItem="i6a-El-q0E" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NSo-Of-GrI"/>
-                            <constraint firstItem="Pig-oO-dqd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dNl-HH-Kfy"/>
-                            <constraint firstItem="Pig-oO-dqd" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="oed-El-WJO"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

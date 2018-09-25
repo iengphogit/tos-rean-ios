@@ -10,16 +10,13 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Thread.sleep(forTimeInterval: 3.0)
-        let viewController = self.window?.rootViewController
-        viewController?.view.backgroundColor = UIColor.FlatColor.AppColor.primaryColorDark
-        viewController?.modalPresentationCapturesStatusBarAppearance = true
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = RootViewController()
+        window?.makeKeyAndVisible()
         
         return true
     }
@@ -70,4 +67,13 @@ extension UIColor {
         }
     }
     
+}
+
+extension AppDelegate {
+    static var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    var rootViewController: RootViewController {
+        return window!.rootViewController as! RootViewController
+    }
 }
