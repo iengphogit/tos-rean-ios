@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.addSubview(tableView)
-        tableView.backgroundColor = .blue
+        tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -74,10 +74,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func createMenuArray() {
-        menus.append(Menu(title: "Menu 1", menuImage: #imageLiteral(resourceName :"book-stack")))
-        menus.append(Menu(title: "Menu 2", menuImage: #imageLiteral(resourceName :"book-stack")))
-        menus.append(Menu(title: "Menu 3", menuImage: #imageLiteral(resourceName :"book-stack")))
+        for i in 0...25 {
+            menus.append(Menu(title: "Menu \(i)", menuImage: #imageLiteral(resourceName :"book-stack")))
+        }
     }
+        
     
 }
 

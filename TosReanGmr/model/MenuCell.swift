@@ -34,13 +34,20 @@ class MenuCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(menuImage)
-        addSubview(menuTitle)
+        let stackView = UIStackView()
+        addSubview(stackView)
         
-        menuImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 90, height: 0, enableInset: false)
-        menuTitle.anchor(top: topAnchor, left: menuImage.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width / 2, height: 0, enableInset: false)
+        stackView.axis = UILayoutConstraintAxis.horizontal
+        stackView.alignment = UIStackViewAlignment.fill
+        stackView.spacing = 5
         
+        stackView.addSubview(menuImage)
+        stackView.addSubview(menuTitle)
         
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        menuImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 90, height: 50, enableInset: false)
+        menuTitle.anchor(top: topAnchor, left: menuImage.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width / 2, height: 50, enableInset: false)
         
     }
     
