@@ -8,68 +8,80 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UITableViewController {
+    let cellId = "cellId"
+    var menus : [Menu] = [Menu]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let titleLbl = UILabel(frame: CGRect.zero)
-//
-//        titleLbl.translatesAutoresizingMaskIntoConstraints = false
-        
-//        let widthConstraint = NSLayoutConstraint(item: titleLbl, attribute: .width, relatedBy: .equal,
-//                                                toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 250)
-//
-//        let heightConstraint = NSLayoutConstraint(item: titleLbl, attribute: .height, relatedBy: .equal,
-//                                                  toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100)
-//
-//
-//        let xConstraint = NSLayoutConstraint(item: titleLbl, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
-//
-//        let yConstraint = NSLayoutConstraint(item: titleLbl, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0)
-//
-//
-       // NSLayoutConstraint.activate([widthConstraint, heightConstraint])
-        
-        let titleLbl = UILabel()
-        self.view.addSubview(titleLbl)
-        titleLbl.text = "Hello"
-        titleLbl.textColor = UIColor.white
-        titleLbl.translatesAutoresizingMaskIntoConstraints = false
-        titleLbl.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive =  true
-        titleLbl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive =  true
-        
-        let a = UILabel()
-        self.view.addSubview(a)
-        a.text = "A label"
-        a.translatesAutoresizingMaskIntoConstraints = false
-        a.topAnchor.constraint(equalTo: titleLbl.bottomAnchor, constant: 10).isActive = true
-        a.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-    
-        
-        //*** Title ***//
-        
-        let mainTitle = UILabel()
-        view.addSubview(mainTitle)
-        
-        mainTitle.text = "Main Title"
-        mainTitle.textColor = UIColor.white
-        mainTitle.textAlignment = .center
-        mainTitle.translatesAutoresizingMaskIntoConstraints = false
-        mainTitle.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        mainTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        mainTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        mainTitle.layer.borderWidth = 1.0
-        mainTitle.layer.borderColor = UIColor.white.cgColor
-    
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let currentLastItem = menus[indexPath.row]
+        cell.textLabel?.text = currentLastItem.title
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menus.count
+    }
+    
+    func createMenuArray() {
+        menus.append(Menu(title: "Menu 1", menuImage: #imageLiteral(resourceName :"book-stack")))
+        menus.append(Menu(title: "Menu 2", menuImage: #imageLiteral(resourceName :"book-stack")))
+        menus.append(Menu(title: "Menu 3", menuImage: #imageLiteral(resourceName :"book-stack")))
+    }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
+}
+
+extension UIView {
     
-    
+    func anchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat, enableInset: Bool) {
+        var topInset = CGFloat(0)
+        var bottomInset = CGFloat(0)
+        
+        if #available(iOS 11, *), enableInset {
+           let insets = self.safeAreaInsets
+            topInset = insets.top
+            bottomInset = insets.bottom
+            print("Top: \(topInset)")
+            print("bottom: \(bottomInset)")
+        }
+        
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        if let top = top {
+            self.topAnchor.constraint(equalTo: top, constant: paddingTop + topInset).isActive = true
+        }
+        
+        if let left = left {
+            self.leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
+        }
+        
+        if let right = right {
+            self.rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
+        }
+        
+        if let bottom = bottom {
+            self.bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom-bottomInset).isActive = true
+        }
+        
+        if height != 0 {
+            heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+        
+        if width != 0 {
+            widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+        
+        
+    }
     
 }
