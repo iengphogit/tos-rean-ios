@@ -12,7 +12,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let lblTitle:UILabel = UILabel()
     private var tableView: UITableView = UITableView()
     
-    private let myArray: NSArray = ["First", "Second", "Third"]
+    private let cellId = "cellId"
+    private var menus : [Menu] = [Menu]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,29 +26,30 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
+        tableView.register(MenuCell.self, forCellReuseIdentifier: cellId)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createMenuArray()
         self.view.backgroundColor = .white
         drawUI()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myArray.count
+        return menus.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        cell.textLabel?.text = self.myArray[indexPath.row] as? String
-        cell.textLabel?.textColor = UIColor.black
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MenuCell
+        cell.menu = menus[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("User selected table row \(indexPath.row) and Item \(myArray[indexPath.row])")
+        
     }
     
     private func drawUI() {
@@ -69,6 +71,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         lblTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive =  true
         
         
+    }
+    
+    func createMenuArray() {
+        menus.append(Menu(title: "Menu 1", menuImage: #imageLiteral(resourceName :"book-stack")))
+        menus.append(Menu(title: "Menu 2", menuImage: #imageLiteral(resourceName :"book-stack")))
+        menus.append(Menu(title: "Menu 3", menuImage: #imageLiteral(resourceName :"book-stack")))
     }
     
 }

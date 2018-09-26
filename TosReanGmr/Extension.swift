@@ -1,44 +1,13 @@
 //
-//  ViewController.swift
+//  Extension.swift
 //  TosReanGmr
 //
-//  Created by Iengpho on 9/21/18.
+//  Created by Iengpho on 9/26/18.
 //  Copyright © 2018 Iengpho. All rights reserved.
 //
 
+import Foundation
 import UIKit
-
-class ViewController: UITableViewController {
-    let cellId = "cellId"
-    var menus : [Menu] = [Menu]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        let currentLastItem = menus[indexPath.row]
-        cell.textLabel?.text = currentLastItem.title
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menus.count
-    }
-    
-    func createMenuArray() {
-        menus.append(Menu(title: "Menu 1", menuImage: #imageLiteral(resourceName :"book-stack")))
-        menus.append(Menu(title: "Menu 2", menuImage: #imageLiteral(resourceName :"book-stack")))
-        menus.append(Menu(title: "Menu 3", menuImage: #imageLiteral(resourceName :"book-stack")))
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
-}
 
 extension UIView {
     
@@ -47,7 +16,7 @@ extension UIView {
         var bottomInset = CGFloat(0)
         
         if #available(iOS 11, *), enableInset {
-           let insets = self.safeAreaInsets
+            let insets = self.safeAreaInsets
             topInset = insets.top
             bottomInset = insets.bottom
             print("Top: \(topInset)")
@@ -85,3 +54,4 @@ extension UIView {
     }
     
 }
+
