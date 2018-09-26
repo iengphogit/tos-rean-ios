@@ -8,60 +8,68 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    private let lblTitle:UILabel = UILabel()
+    private var tableView: UITableView = UITableView()
+    
+    private let myArray: NSArray = ["First", "Second", "Third"]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.addSubview(tableView)
+        tableView.backgroundColor = .blue
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-    
-        let titleLbl = UILabel()
-        self.view.addSubview(titleLbl)
-        
-        titleLbl.text = "Hello"
-        titleLbl.textColor = UIColor.black
-        titleLbl.translatesAutoresizingMaskIntoConstraints = false
-        titleLbl.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive =  true
-        titleLbl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive =  true
-        
-        let a = UILabel()
-        self.view.addSubview(a)
-        a.text = "A label"
-        a.translatesAutoresizingMaskIntoConstraints = false
-        a.topAnchor.constraint(equalTo: titleLbl.bottomAnchor, constant: 10).isActive = true
-        a.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        
-        
-        //*** Title ***//
-        
-        let mainTitle = UILabel()
-        view.addSubview(mainTitle)
-        mainTitle.text = "Main Title"
-        mainTitle.textColor = UIColor.black
-        mainTitle.textAlignment = .center
-        
-        mainTitle.translatesAutoresizingMaskIntoConstraints = false
-        mainTitle.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        mainTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        mainTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        mainTitle.layer.borderWidth = 1.0
-        mainTitle.layer.borderColor = UIColor.white.cgColor
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        drawUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myArray.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        cell.textLabel?.text = self.myArray[indexPath.row] as? String
+        cell.textLabel?.textColor = UIColor.black
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("User selected table row \(indexPath.row) and Item \(myArray[indexPath.row])")
+    }
+    
+    private func drawUI() {
+        
+        //Font
+        let font = UIFont(name: "Montserrat", size: 22);
+//        let boldFont = font!.bold()
+        
+        //Title
+        self.view.addSubview(lblTitle)
+        lblTitle.text = "Learn 16 Tenses"
+        lblTitle.font = font
+        lblTitle.textColor = UIColor.black
+        lblTitle.textAlignment = NSTextAlignment.center
+        //Constraint
+        lblTitle.translatesAutoresizingMaskIntoConstraints = false
+        lblTitle.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        lblTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+        lblTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive =  true
+        
+        
+    }
+    
 }
+
