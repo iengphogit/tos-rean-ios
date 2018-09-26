@@ -12,15 +12,13 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let rootViewController = AppDelegate.shared.rootViewController
-        rootViewController.view.backgroundColor = .white
-        
+        self.view.backgroundColor = .white
+    
         let titleLbl = UILabel()
         self.view.addSubview(titleLbl)
         
         titleLbl.text = "Hello"
-        titleLbl.textColor = UIColor.white
+        titleLbl.textColor = UIColor.black
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
         titleLbl.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive =  true
         titleLbl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive =  true
@@ -38,7 +36,7 @@ class HomeViewController: UIViewController {
         let mainTitle = UILabel()
         view.addSubview(mainTitle)
         mainTitle.text = "Main Title"
-        mainTitle.textColor = UIColor.white
+        mainTitle.textColor = UIColor.black
         mainTitle.textAlignment = .center
         
         mainTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -47,8 +45,6 @@ class HomeViewController: UIViewController {
         mainTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         mainTitle.layer.borderWidth = 1.0
         mainTitle.layer.borderColor = UIColor.white.cgColor
-        
-        
         
     }
 

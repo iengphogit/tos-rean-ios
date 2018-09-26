@@ -12,7 +12,8 @@ class SplashScreenController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor.white
+        
         let width = self.view.frame.size.width
         let y = self.view.frame.size.height / 2
         let height = 70
@@ -21,6 +22,10 @@ class SplashScreenController: UIViewController {
         title.font = UIFont(name: "Bayon", size: 40.0)
         title.textAlignment = .center
         title.textColor = UIColor.white
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.showHomeScreen))
+        title.isUserInteractionEnabled = true
+        title.addGestureRecognizer(gestureRecognizer)
         
         self.view.addSubview(title)
         
@@ -40,7 +45,17 @@ class SplashScreenController: UIViewController {
         subTitle.textAlignment = .center
         self.view.addSubview(subTitle)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            AppDelegate.shared.rootViewController.switchToHomeScreen()
+        }
     }
+    
+    @objc func showHomeScreen(_ sender: UIGestureRecognizer) {
+        print("showHomeScreen")
+        //AppDelegate.shared.rootViewController.showHomeScreen()
+        AppDelegate.shared.rootViewController.switchToHomeScreen()
+    }
+    
     
     override var prefersStatusBarHidden: Bool {
         return true

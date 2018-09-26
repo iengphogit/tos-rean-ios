@@ -10,11 +10,11 @@ import UIKit
 
 class RootViewController: UIViewController {
     private var current: UIViewController
-    
     init() {
         self.current = SplashScreenController()
         self.current.view.backgroundColor = UIColor.FlatColor.AppColor.primaryColor
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,7 +29,8 @@ class RootViewController: UIViewController {
         current.didMove(toParentViewController: self)
     }
     
-    func showHomeScreen() {
+   private func showHomeScreen() {
+        self.view.backgroundColor = .white
         let homeScreen = UINavigationController(rootViewController: HomeViewController())
         addChildViewController(homeScreen)
         homeScreen.view.frame = view.bounds
@@ -39,7 +40,6 @@ class RootViewController: UIViewController {
         current.willMove(toParentViewController: nil)
         current.view.removeFromSuperview()
         current.removeFromParentViewController()
-        
         current = homeScreen
     }
     
@@ -65,7 +65,7 @@ class RootViewController: UIViewController {
     }
     
     private func animateDismissTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
-        let initialFrame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width, height: view.bounds.height)
+        //let initialFrame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width, height: view.bounds.height)
         current.willMove(toParentViewController: nil)
         addChildViewController(new)
         transition(from: current, to: new, duration: 0.3, options: [], animations: {
